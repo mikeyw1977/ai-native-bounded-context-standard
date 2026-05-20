@@ -100,3 +100,64 @@ exist as an architectural artifact. It will be lost between sessions, cannot be
 audited, and cannot be linked to the decisions it informed.
 
 See also: [Principle 11 — AI Artifacts Are First-Class Versioned Objects](principles.md#11-ai-artifacts-are-first-class-versioned-objects)
+
+---
+
+# Contract Information Hiding
+
+Contracts define what a cell exposes. They also implicitly define what a cell
+does not expose. These are equally important decisions.
+
+A cell that has processed a rich internal representation — persona transcripts,
+intermediate scoring steps, evidence chains, model reasoning — knows more than
+any consumer needs. The contract must expose the minimum sufficient for each
+consumer to perform its function at its stage of the value stream.
+
+**Why this matters:**
+
+Exposing more than necessary creates hidden coupling. If debate-cell emits full
+persona transcripts and portfolio-cell begins to reason about them, portfolio-cell
+now depends on debate-cell's internal representation. When debate-cell changes
+how it runs personas, portfolio-cell breaks — through a mechanism that no contract
+clause prevents, because the data was technically available.
+
+The consumer should receive what it needs to act, not everything the provider knows.
+
+**The value stream test:**
+
+At each value stream stage, ask: what is the minimum output from this cell that
+allows the next stage to perform its function without loss of correctness?
+
+- debate-cell → portfolio-cell: verdicts, conviction, horizon, divergence flag.
+  Not persona transcripts, not intermediate reasoning, not raw model outputs.
+- market-data-cell → debate-cell: ranked candidates with structural signals.
+  Not raw OHLCV bars, not intermediate scoring computations.
+- hypothesis-cell → market-data-cell: related tickers for a theme.
+  Not confidence history, not change log, not evidence accumulation detail.
+
+Consumers at later value stream stages accumulate more context because they need
+it for governance decisions. Consumers at earlier stages need less. The contract
+must reflect the consumer's position, not the provider's richness.
+
+**Progressive disclosure by stage:**
+
+This is not about hiding information for its own sake. It is about right-sizing
+the contract surface so that:
+
+- the provider can change its internal representation without breaking consumers,
+- the consumer cannot accidentally build logic that depends on unstable internals,
+- and each cell's contract teaches its consumers to think at the right level of
+  abstraction for their position in the value stream.
+
+A cell that exposes everything it knows has no internal representation — its
+internals are its contract, making it unreplaceable.
+
+**Audit access is a separate concern:**
+
+Information hiding at the contract boundary does not mean the internal
+representation is unavailable for audit. Observable transformation (Principle 9)
+requires cells to store their full intermediate outputs. Those outputs are
+accessible through audit mechanisms, not through the runtime contract.
+
+Runtime consumers receive the minimum sufficient. Audit consumers receive everything.
+These are different access paths with different purposes.
