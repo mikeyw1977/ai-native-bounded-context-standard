@@ -29,6 +29,8 @@ Prompt context is not a boundary. Multiple responsibilities in a single context
 cannot be independently evolved, tested, or replaced. When one concern's reasoning
 destabilises another, there is no boundary to contain or diagnose the failure.
 
+See [Principle 4 — Cells Are Bounded Runtime Units](principles.md#4-cells-are-bounded-runtime-units) and [Cell Session Access](cell-development-model.md#cell-session-access).
+
 ---
 
 ## 2. Hidden Coupling
@@ -53,6 +55,8 @@ The structural control is principle of least privilege: the AI assistant cannot
 violate a boundary it cannot access. Agreed discipline alone is not a reliable
 control — completion pressure will override it.
 
+See [Principle 10 — Contracts Are Mandatory](principles.md#10-contracts-are-mandatory), [Principle of Least Privilege](cell-development-model.md#principle-of-least-privilege), and [Decomposition Watchdog](decomposition-watchdog.md).
+
 ---
 
 ## 3. Autonomous AI Authority
@@ -75,6 +79,8 @@ configuration, but by practice.
 No cell may execute a privileged action or mutate protected state without passing
 through a deterministic, human-operable approval gate. The gate must be structurally
 enforced — not merely documented as a requirement.
+
+See [Principle 11 — Deterministic Governance Overrides AI Interpretation](principles.md#11-deterministic-governance-overrides-ai-interpretation) and [Governance — Consequence Classes](governance.md#the-recommendation-authority-boundary).
 
 ---
 
@@ -108,6 +114,8 @@ declared value stream, the correct response is to surface it for operator review
 not to implement it speculatively. A suggested value stream addition is a valid
 output. Unsanctioned implementation is not.
 
+See [Principle 5 — Every Cell Must Declare Its Value Stream Position](principles.md#5-every-cell-must-declare-its-value-stream-position) and [Cell Qualification Criteria](cells.md#cell-qualification-criteria).
+
 ---
 
 ## 5. Shared Prompt Architecture
@@ -132,6 +140,8 @@ Cell behaviour must be governed by the cell's own bounded context — its CLAUDE
 its logic tree, its contracts. Shared prompt context is shared state, and shared
 state is coupling.
 
+See [The CLAUDE.md as Boundary Contract](cell-development-model.md#the-claudemd-as-boundary-contract) and [Principle 4 — Cells Are Bounded Runtime Units](principles.md#4-cells-are-bounded-runtime-units).
+
 ---
 
 ## 6. Non-Testable Intelligence
@@ -152,6 +162,8 @@ record exists of the inputs, the model version, and the reasoning chain, then:
 Non-testable intelligence is not a model problem — it is an architectural choice.
 The cell was not required to emit its working. Correct outputs without observable
 reasoning are not a passing test. They are a deferred failure.
+
+See [Evaluation Model](evaluation-model.md) and [Principle 12 — Observability Is Mandatory](principles.md#12-observability-is-mandatory).
 
 ---
 
@@ -182,6 +194,8 @@ confidence figure that is factually wrong.
 Every evidence source must carry a stable identifier. Any cell that accumulates
 evidence must track which source identifiers it has already incorporated and reject
 resubmission of the same event.
+
+See [Principle 8 — AI Artifacts Are First-Class Versioned Objects](principles.md#8-ai-artifacts-are-first-class-versioned-objects).
 
 ---
 
@@ -218,7 +232,7 @@ The fat-cell pattern is explicitly supported as a legitimate architectural start
 point. Extract boundaries when fitness-function evidence shows that the cost of
 coupling exceeds the cost of separation.
 
-See [Principle 3 — Implement Intent First, Extract Boundaries Later](principles.md#3-implement-intent-first-extract-boundaries-later).
+See [Principle 3 — Implement Intent First, Extract Boundaries Later](principles.md#3-implement-intent-first-extract-boundaries-later) and [Cell Boundary Trade-offs](cells.md#cell-boundary-trade-offs).
 
 ---
 
