@@ -109,6 +109,33 @@ See [Principle 10 — Implement Intent First, Extract Boundaries Later](principl
 
 ---
 
+## Boundary Absorption
+
+An AI assistant operating in a cell session solving problems that belong to another
+cell's domain — even when the solution is technically correct and requires no access
+to out-of-bounds files.
+
+Boundary absorption is more subtle than cross-cell file access. It occurs when:
+
+- An EA Cell assistant answers a market thesis question (hypothesis-cell domain)
+  rather than redirecting to a hypothesis-cell session
+- An AI assistant in execution-cell session defines trade sizing rules (governance
+  domain) because the operator raised the question mid-session
+- A hypothesis-cell assistant builds structural analysis logic (market-data domain)
+  to avoid an incomplete-seeming response
+
+The consequence is not immediately visible. The answer may be correct. The code may
+work. But the capability lives in the wrong cell: it cannot be found through the
+correct contract, cannot be tested by the correct cell's fitness functions, and
+cannot be replaced by replacing the correct cell.
+
+The correct response to an out-of-scope question is to name the owning cell and
+redirect — not to solve it from the current context.
+
+See [Out-of-Scope Redirection](cell-development-model.md#out-of-scope-redirection).
+
+---
+
 ## In-Context Patching
 
 Modifying shared prompt context, global configuration, or session state to correct

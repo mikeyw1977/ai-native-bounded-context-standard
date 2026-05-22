@@ -23,6 +23,49 @@ Potential qualification criteria include:
 
 Premature cell proliferation is discouraged. See [Anti-Patterns — Premature Boundary Extraction](anti-patterns.md#premature-boundary-extraction).
 
+See also: [Cell Boundary Trade-offs](#cell-boundary-trade-offs) for how to reason about co-location decisions before applying these criteria.
+
+---
+
+# Cell Boundary Trade-offs
+
+The question of whether two capabilities belong in the same cell is frequently answered by default — either by a bias toward co-location ("the domain is still being discovered") or a bias toward separation ("separate concerns"). Neither default is categorically correct. The decision deserves deliberate reasoning.
+
+## Two types of uncertainty that are often conflated
+
+**Implementation uncertainty** — how complex is this? what are the edge cases? how does the internal logic work? — is a legitimate reason to iterate quickly inside a single cell before separating. You learn by building.
+
+**Purpose uncertainty** — what is this capability *for*? what question does it answer? what data does it own? — is a different kind of uncertainty. When you can articulate the functional purpose clearly, the boundary is available. Whether the implementation is five lines or five hundred is irrelevant to whether the boundary should exist.
+
+Invoking implementation uncertainty to justify co-locating capabilities with clearly distinct purposes is the most common route to accumulated coupling.
+
+## The primary decision criterion
+
+Before placing a new capability inside an existing cell, ask:
+
+> Does this capability serve the same functional purpose as what is already here — answering the same questions, owning the same data, serving the same value stream?
+
+If yes: same cell, even if it grows large.  
+If no: separate cell, even if it starts simple.
+
+Convenience of co-location is not a reason. Shared runtime is not a reason. The fact that two capabilities interact is not a reason — interaction is what contracts are for.
+
+## When co-location is genuinely appropriate
+
+Co-location within a fat cell is appropriate when the **domain vocabulary itself has not stabilised** — when you do not yet know what the right questions are, let alone who answers them. This applies to genuinely exploratory work where the business purpose of a capability is unknown, not merely underspecified.
+
+A system that frequently invokes "the domain is still being discovered" to justify co-location is accumulating coupling under an exploratory excuse. If you can name what a capability is for, you can bound it.
+
+## The practical challenge
+
+Neither monolith-first nor granular decomposition is categorically correct. At any boundary decision, challenge the choice with three questions:
+
+1. Can I clearly articulate what this capability is for, what question it answers, and what data it owns?
+2. Does the answer differ meaningfully from what is already in the candidate cell?
+3. If so, what is the cost of enforcing the boundary now versus the cost of extracting it later?
+
+The answers vary by context. The practice is to ask the questions deliberately rather than defaulting to whichever pattern is locally convenient.
+
 ---
 
 # Cell Principles

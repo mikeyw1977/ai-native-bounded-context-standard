@@ -289,3 +289,101 @@ be replaced without risk. A cell with explicit contracts can be replaced at any 
 
 The target deployment pattern is cell immutability: cells are versioned artefacts,
 not living systems that accumulate patches.
+
+---
+
+## 14. Cells Must Be Sized for AI Comprehension
+
+A cell must be sized such that its complete specification — value stream position,
+capability statement, logic tree, contract, fitness functions, and tests — can be
+understood by an AI assistant in a single reasoning session, with enough remaining
+capacity to generate a complete replacement implementation.
+
+This is the practical test for cell sizing. If a cell's specification cannot fit
+within a reasoning session, the cell has accumulated too much responsibility. It
+is not too large in terms of lines of code — it is too large in terms of semantic
+scope. The corrective action is decomposition, not summarisation.
+
+This principle makes replaceability (Principle 7) operationally testable. A cell
+that fails the AI comprehension test is a cell that cannot be reliably replaced
+by AI-assisted generation. It can only be rewritten — an uncontrolled process
+with unknown correctness.
+
+The cell sizing constraint is primarily a business-semantics constraint, not a
+technical one. A cell is correctly sized when it serves a single, clearly statable
+concern in a single value stream position. Code volume is a downstream consequence
+of correct sizing, not the sizing criterion itself.
+
+---
+
+## 15. Every Cell Must Declare Its Value Stream Position
+
+A cell's existence must be justified by its position in a value stream. That
+position must be explicitly documented as part of the cell's specification — in
+its CLAUDE.md or equivalent boundary document — not merely used during
+decomposition planning and then discarded.
+
+The value stream position declaration answers three questions:
+
+* Which value stream does this cell serve?
+* At which stage in that stream does this cell operate?
+* What breaks at the business level if this cell fails or degrades?
+
+A cell that cannot answer these questions unambiguously is either misplaced
+or should not exist.
+
+Value stream position documentation serves two purposes beyond operational
+clarity. First, it provides the contextual frame that an AI assistant needs
+to make correct judgment calls when generating a replacement — not just what
+the cell produces, but why that output matters to the broader flow. Second,
+it prevents semantic-free decomposition (the anti-pattern of splitting cells
+for technical convenience rather than business reason).
+
+The value stream position is scale-invariant. The same position in a value
+stream exists whether the system is operated by one person or a thousand.
+The organisational structure that staffs the position changes. The position
+itself does not.
+
+---
+
+## 16. Cell Specifications Must Be Sufficient for AI-Assisted Regeneration
+
+A cell's specification documents — taken together, without access to the
+implementation — must be sufficient for a well-instructed AI assistant to
+generate a functionally equivalent replacement.
+
+The specification consists of six layers:
+
+```
+Value Stream Position    WHY this cell exists in the business flow
+    ↓
+Capability Statement     WHAT question this cell answers, what data it owns
+    ↓
+Logic Tree               HOW it decides (above code, below interface)
+    ↓
+Contract                 WHAT comes in, what comes out, what errors are valid
+    ↓
+Fitness Functions        WHAT good looks like in production (business + technical)
+    ↓
+Tests                    WHAT correct looks like at the boundary
+```
+
+The **logic tree** is the layer most commonly absent from existing systems. It
+is the capability specification — the decision structure, transformation rules,
+classification logic, and reasoning model of the cell, expressed in plain language
+above the implementation. It is not code. It is the intent behind the code.
+
+Without the logic tree, a replacement can satisfy the contract and pass the tests
+but make decisions for different reasons. It may pass known test cases and fail
+unknown production inputs, because the tests verify outputs, not the reasoning
+that produces them.
+
+When the specification is complete, the implementation becomes a realisation of
+the spec — one of potentially many valid implementations. This is what makes
+model-agnostic replaceability real rather than aspirational. The spec accumulates
+institutional knowledge across model generations. The implementation is replaced
+when a better one can be generated.
+
+A specification that is incomplete is not a specification. It is a partial
+description of a system that only the original implementation fully defines.
+That is the same as no specification at all.
