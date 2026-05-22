@@ -1,6 +1,6 @@
 # AI-Native Bounded Context Architecture Standard (AINBCAS)
 
-> Experimental Architectural Standard — Version 0.2
+> Experimental Architectural Standard — Version 0.5
 
 ---
 
@@ -53,6 +53,7 @@ independently observable behaviour — not through trusting internal AI reasonin
 | [patterns.md](patterns.md) | Topology, interface language, structural narrative vs execution record |
 | [anti-patterns.md](anti-patterns.md) | 14 explicitly discouraged patterns |
 | [security-model.md](security-model.md) | Identity, authority, semantic integrity — the three trust breakdown points |
+| [threat-model.md](threat-model.md) | Why traditional security is insufficient against AI-assisted attacks; the architecture as defensive posture |
 | [reference.md](reference.md) | EA alignment, suggested lifecycle, standard philosophy |
 | [cell-development-model.md](cell-development-model.md) | Bounded AI development context, principle of least privilege, capability map, privilege elevation protocol |
 | [deployment-model.md](deployment-model.md) | Repo model, per-cell CI pipelines, versioning, state migration, deployable cell checklist |
