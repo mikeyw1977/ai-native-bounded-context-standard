@@ -10,6 +10,15 @@ AINBCAS is a governance model for autonomous capability units. The same governan
 applies whether a capability is delivered by a team of engineers, an AI system, or
 a combination of both.
 
+A **cell** is the unit of governance. It is an autonomous unit of capability with
+a declared boundary, explicit contracts, and observable behaviour. A cell may be
+any size — a single function, a service, a team's entire domain. What makes it a
+cell is not its size or technology but its properties: it declares what it does,
+exposes how it behaves, and can be held accountable through externally verifiable
+evidence without access to its internal reasoning. A cell operated by an AI system
+and a cell operated by a team of engineers are governed identically. That is the
+point.
+
 The governing thesis:
 
 * The cell boundary is a trust boundary
