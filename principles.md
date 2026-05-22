@@ -269,7 +269,10 @@ AI systems must NOT:
 
 * bypass governance,
 * directly mutate protected state,
-* or execute privileged actions without deterministic approval.
+* execute privileged actions without deterministic approval, or
+* treat prompt context as authority — permissions are defined at the tooling
+  boundary, not in the model context window. If modifying the system prompt
+  would change what a cell is permitted to do, the authority model is broken.
 
 Governance must remain:
 

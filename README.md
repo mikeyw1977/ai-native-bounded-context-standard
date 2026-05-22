@@ -6,19 +6,31 @@
 
 ## Purpose
 
-AINBCAS defines principles, patterns, and governance mechanisms for building
-intelligent systems composed of independently evolvable bounded contexts ("cells").
+AINBCAS is a governance model for autonomous capability units. The same governance
+applies whether a capability is delivered by a team of engineers, an AI system, or
+a combination of both.
+
+The governing thesis:
+
+* The cell boundary is a trust boundary
+* Contracts are behavioural constraints
+* Fitness functions are operational accountability
+* Observability is evidence
+* Replayability is forensic capability
+* Governance exists because internal reasoning cannot be trusted
 
 The standard addresses architectural risks emerging in AI-driven systems:
 
 * prompt monoliths and opaque reasoning,
 * uncontrolled autonomy and hidden coupling,
 * brittle orchestration and context-window dependency,
-* unsafe execution behaviour.
+* unsafe execution behaviour,
+* prompt injection as privilege escalation,
+* governance degrading into ceremony.
 
-AINBCAS proposes that intelligent systems should be designed using enterprise
-semantic architecture, bounded contexts, explicit contracts, deterministic
-governance, fitness functions, and independently evolvable cells.
+AINBCAS proposes that these risks are managed through bounded capability units with
+explicit contracts, deterministic governance gates, fitness functions, and
+independently observable behaviour — not through trusting internal AI reasoning.
 
 ---
 
@@ -30,7 +42,8 @@ governance, fitness functions, and independently evolvable cells.
 | [cells.md](cells.md) | Cell qualification, cell principles, performance measurement, corrective action |
 | [governance.md](governance.md) | Deterministic governance, recommendation-authority boundary, consequence classes, model accountability |
 | [patterns.md](patterns.md) | Topology, interface language, structural narrative vs execution record |
-| [anti-patterns.md](anti-patterns.md) | 12 explicitly discouraged patterns |
+| [anti-patterns.md](anti-patterns.md) | 14 explicitly discouraged patterns |
+| [security-model.md](security-model.md) | Identity, authority, semantic integrity — the three trust breakdown points |
 | [reference.md](reference.md) | EA alignment, suggested lifecycle, standard philosophy |
 | [cell-development-model.md](cell-development-model.md) | Bounded AI development context, principle of least privilege, capability map, privilege elevation protocol |
 | [deployment-model.md](deployment-model.md) | Repo model, per-cell CI pipelines, versioning, state migration, deployable cell checklist |
@@ -77,6 +90,8 @@ governance, fitness functions, and independently evolvable cells.
 10. Premature Boundary Extraction
 11. Boundary Absorption
 12. In-Context Patching
+13. Prompt-Defined Authority
+14. Governance Theatre
 
 ---
 

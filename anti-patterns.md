@@ -265,3 +265,62 @@ boundary, or replace the cell entirely with a new deployment. The shared context
 must not become a repair surface.
 
 See [Principle 16 — Cells Are Deployment Units](principles.md#16-cells-are-deployment-units--replace-dont-patch) and [Corrective Action Taxonomy](cells.md#corrective-action-taxonomy).
+
+---
+
+## 13. Prompt-Defined Authority
+
+Authority encoded in a system prompt rather than enforced at the tooling boundary.
+
+A cell whose permitted actions are defined in its system prompt can have its
+authority expanded by anyone who can manipulate that prompt. Prompt injection
+becomes privilege escalation. An attacker — or a badly scoped input — does not
+need to breach a security boundary; they only need to alter the context the AI
+reasons from.
+
+Prompts define behaviour. Tooling boundaries define authority. These must not be
+the same thing. A cell may only invoke declared contracts, access declared tools,
+emit declared events, and consume declared data classifications. Everything else
+must fail closed — not because the prompt says so, but because the tool gateway
+enforces it.
+
+Authority must exist outside the model context window. If suspending or modifying
+the system prompt would change what a cell is permitted to do, the authority model
+is broken.
+
+See [Security Model](security-model.md#authority).
+
+---
+
+## 14. Governance Theatre
+
+Approval gates that exist structurally but are bypassed behaviourally — humans
+processing AI recommendations without meaningful independent review.
+
+Governance theatre emerges when throughput pressure, anchoring on AI outputs, and
+invisible review quality combine to make approval gates ceremonial. The human is
+in the loop but not in the decision. Each approval takes seconds. Rejections are
+rare. The AI recommendation is shown before the reviewer forms an independent view.
+Over time the approval gate becomes a latency cost with no governance value.
+
+The failure is not that humans approve too often. It is that the structure of the
+review process makes independent judgement unlikely. Governance theatre is a
+systems problem, not a discipline problem.
+
+Structural controls that work:
+
+* **Delayed reveal** — do not show the AI recommendation or confidence score until
+  the reviewer has formed an independent view. Anchoring on the AI output is the
+  primary mechanism by which governance theatre develops.
+* **Mandatory rationale divergence** — reviewers must provide independent reasoning,
+  not agreement text. "Approved — exposure within threshold despite elevated
+  volatility" is a review. "Looks good" is not.
+* **Consequence-weighted friction** — higher consequence class requires stronger
+  evidence, multi-reviewer approval, and narrower automation tolerance. Governance
+  cost must scale with blast radius.
+* **Reviewer calibration** — track approval accuracy, override quality, and
+  rubber-stamping patterns over time. Reviewers are observable systems. A reviewer
+  whose disagreement rate approaches zero is a governance signal, not a sign of
+  quality AI output.
+
+See [Governance — Consequence Classes](governance.md#the-recommendation-authority-boundary).

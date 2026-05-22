@@ -162,3 +162,45 @@ accessible through audit mechanisms, not through the runtime contract.
 
 Runtime consumers receive the minimum sufficient. Audit consumers receive everything.
 These are different access paths with different purposes.
+
+---
+
+# Semantic Contracts
+
+A schema validates structure. A semantic contract validates meaning.
+
+Two cells can be syntactically compliant and semantically divergent. Both define
+"confidence." Both pass schema validation. One means directional certainty about
+an outcome. The other means data completeness. Downstream synthesis corrupts
+silently — not because the contract was violated, but because the contract never
+captured the meaning.
+
+Schema contracts are necessary but not sufficient. For any term that crosses a
+cell boundary and influences downstream behaviour, the contract must also define:
+
+* **Bounded vocabulary** — the term's meaning scoped explicitly to this cell's
+  domain. "Confidence" in a signal-scoring cell means directional certainty.
+  That must be stated, not assumed.
+* **Invariants** — what must always be true about this value regardless of
+  implementation. "A conviction score of 0.9 means the evidence strongly supports
+  the direction — not that 90% of data sources agreed."
+* **Consequence semantics** — what downstream action the value implies. What does
+  BLOCK mean to a governance cell versus a routing cell? The same word can mean
+  different things to different consumers. If it does, the contract must say so.
+
+**Glossary ownership follows contract ownership.** The cell that owns a contract
+owns the semantic definitions within it. If the EA cell owns inter-cell contracts,
+it owns the vocabulary those contracts use. A cell that interprets a contracted
+term differently from its definition has a contract violation, not a naming
+preference.
+
+**Semantic drift is a governance failure, not a development failure.** It
+accumulates when contracts are treated as schema specifications only, when
+vocabulary evolves without contract updates, and when cells are replaced without
+verifying that the replacement interprets shared terms identically.
+
+The decomposition watchdog cannot detect semantic drift from static analysis alone.
+It requires semantic checks (see `decomposition-watchdog.md`) — reasoning against
+contract definitions, not just schema validation.
+
+See [Anti-Pattern 9 — Cross-Cell Semantic Leakage](anti-patterns.md#9-cross-cell-semantic-leakage).
