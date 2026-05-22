@@ -6,43 +6,156 @@ AINBCAS explicitly discourages the following patterns.
 
 ---
 
-## Prompt Monoliths
+## 1. Prompt Monoliths
 
-Large shared prompts controlling multiple unrelated responsibilities.
+A single prompt context containing multiple unrelated responsibilities — governance
+rules, domain logic, orchestration instructions, and evaluation criteria all in
+one place.
 
----
+This anti-pattern has two manifestations. The first is a large system prompt that
+attempts to govern multiple concerns at once: when one concern is updated, reasoning
+for the others is destabilised because the context is not partitioned. The second
+is an extended session that accumulates multiple concerns over time — domain logic
+added mid-session bleeds into governance reasoning from session start, producing
+unpredictable interactions between things that have no business relation.
 
-## Hidden Coupling
+In both cases the AI's bias toward satisfying the immediate request makes the problem
+worse. Given access to a monolithic context, the AI draws on all of it — applying
+governance reasoning to creative tasks, domain assumptions to infrastructure work,
+generalising across concerns that should be isolated. The monolith does not prevent
+this; it makes it structurally inevitable.
 
-Implicit behavioural dependencies between cells.
-
----
-
-## Autonomous AI Authority
-
-AI systems bypassing deterministic governance.
-
----
-
-## Semantic-Free Decomposition
-
-Creating services from technical enthusiasm rather than business semantics.
-
----
-
-## Shared Prompt Architecture
-
-Multiple cells relying on one evolving prompt context.
+Prompt context is not a boundary. Multiple responsibilities in a single context
+cannot be independently evolved, tested, or replaced. When one concern's reasoning
+destabilises another, there is no boundary to contain or diagnose the failure.
 
 ---
 
-## Non-Testable Intelligence
+## 2. Hidden Coupling
 
-Reasoning systems without replayability or evaluation.
+Implicit behavioural dependencies between cells — specifically, dependencies
+introduced by an AI assistant that understood the boundary principle and violated
+it anyway.
+
+In traditional systems, hidden coupling is usually accidental: a developer adds a
+shortcut without realising the dependency. In AI-assisted development, hidden
+coupling is actively generated. An AI assistant will agree to maintain cell
+boundaries in principle, then cross them in practice in the same session — because
+the fastest path to satisfying the immediate request crosses the boundary. It will
+state the correct architectural rule and produce code that violates it.
+
+The consequences compound. A cross-cell import added "just this once" becomes a
+load-bearing dependency. A shared assumption baked into two cells' logic becomes
+an undocumented contract. Neither is visible in the declared interface. Both break
+silently when one side changes.
+
+The structural control is principle of least privilege: the AI assistant cannot
+violate a boundary it cannot access. Agreed discipline alone is not a reliable
+control — completion pressure will override it.
 
 ---
 
-## Silent Transformation
+## 3. Autonomous AI Authority
+
+AI systems taking consequential actions or making governance decisions without
+human approval gates — either by design or through gradual scope expansion.
+
+The obvious form is an AI cell wired directly to an execution mechanism with no
+human checkpoint. The more dangerous form is subtler: a cell designed to recommend
+that becomes a de facto decision because the recommendation is never challenged.
+The approval gate remains structurally in place but is functionally bypassed.
+The cell has not been granted autonomous authority — it has acquired it through
+disuse of the gate.
+
+AI systems are effective at presenting outputs as authoritative. Operators who
+consistently accept recommendations without review begin treating them as decisions.
+The system designed with a human in the loop is now operating without one — not by
+configuration, but by practice.
+
+No cell may execute a privileged action or mutate protected state without passing
+through a deterministic, human-operable approval gate. The gate must be structurally
+enforced — not merely documented as a requirement.
+
+---
+
+## 4. Semantic-Free Decomposition
+
+Creating cells, services, abstractions, or code that do not serve a declared value
+stream — driven by technical enthusiasm, speculative future-proofing, or an AI
+assistant's bias toward generating complete-looking solutions.
+
+Every line of code in a system is a liability. It must be maintained, tested,
+secured, and understood. Code that exists without a value stream justification
+accumulates this cost without producing a corresponding benefit. Orphaned utilities,
+unused abstractions, and speculative infrastructure are not neutral — they are
+attack surface. Exploits frequently enter through code that is present but not
+actively governed, because no one is watching something that appears to serve
+no purpose.
+
+AI assistants are particularly prone to generating this kind of code. Given a
+request to implement a capability, an AI will naturally produce helper functions
+"in case they are needed," generic abstractions that no current caller uses,
+and defensive code paths for scenarios that do not exist. Each addition feels
+reasonable in context. In aggregate they produce a codebase that is more complex
+than its value streams require — necessarily complicated for reasons nobody
+intended.
+
+The discipline is simple: every capability, cell, abstraction, and non-trivial
+function must trace to a value stream. If it does not, it should not exist.
+
+When an AI assistant identifies a legitimate need that is not yet covered by a
+declared value stream, the correct response is to surface it for operator review —
+not to implement it speculatively. A suggested value stream addition is a valid
+output. Unsanctioned implementation is not.
+
+---
+
+## 5. Shared Prompt Architecture
+
+Multiple cells relying on a single shared prompt context for their governing
+instructions, evaluation criteria, or domain knowledge.
+
+The structural consequence mirrors an organisation where every decision is routed
+through a single point of authority. The shared context gets outcomes — cells behave
+consistently because they all draw from the same source — but independent evolution
+becomes impossible. Updating the shared context to improve one cell risks
+destabilising all others. No cell can be tested in isolation because its behaviour
+depends on a context it does not own. Replacing one cell requires reasoning about
+how the shared context affects everything else.
+
+The deeper problem is that a shared prompt context is a hidden contract. Cells do
+not declare their dependency on it. There is no schema, no version, and no consumer
+list. When the context changes, breakage is discovered at runtime, not at the
+boundary.
+
+Cell behaviour must be governed by the cell's own bounded context — its CLAUDE.md,
+its logic tree, its contracts. Shared prompt context is shared state, and shared
+state is coupling.
+
+---
+
+## 6. Non-Testable Intelligence
+
+AI reasoning systems with no mechanism for replay, verification, or systematic
+evaluation.
+
+A reasoning system that cannot be replayed cannot be tested. If a cell makes a
+decision — classifies a case, qualifies a candidate, approves a request — and no
+record exists of the inputs, the model version, and the reasoning chain, then:
+
+* correct behaviour observed once gives no confidence about future behaviour,
+* degradation is invisible until it manifests as a downstream failure,
+* model drift cannot be detected after a model update,
+* and the cell cannot be replaced with confidence because "better" has no measurable
+  definition.
+
+Non-testable intelligence is not a model problem — it is an architectural choice.
+The cell was not required to emit its working. Correct outputs without observable
+reasoning are not a passing test. They are a deferred failure.
+
+---
+
+## 7. Silent Transformation
 
 A cell or pipeline stage that transforms, filters, enriches, ranks, or suppresses
 information without emitting observable evidence of what changed and why.
@@ -55,7 +168,7 @@ See [Principle 13 — Observable Transformation](principles.md#13-observable-tra
 
 ---
 
-## Evidence Inflation
+## 8. Evidence Inflation
 
 Reprocessing the same source event multiple times without source identity tracking,
 causing a single fact to be counted as multiple independent pieces of evidence.
@@ -63,7 +176,7 @@ causing a single fact to be counted as multiple independent pieces of evidence.
 Evidence inflation artificially increases conviction. A system that processes the
 same filing, transaction, or document across multiple sessions without deduplication
 will accumulate corroboration that does not exist. The corrective action — lowering
-a threshold, reducing a position, triggering a review — is applied against a
+a threshold, adjusting an allocation, triggering a review — is applied against a
 confidence figure that is factually wrong.
 
 Every evidence source must carry a stable identifier. Any cell that accumulates
@@ -72,7 +185,7 @@ resubmission of the same event.
 
 ---
 
-## Confidence Conflation
+## 9. Confidence Conflation
 
 Expressing data quality, completeness, or source reliability as a conviction score,
 causing downstream synthesis to treat low-quality data as low-conviction evidence.
@@ -91,7 +204,7 @@ See [Principle 9 — Evidence Quality and Conviction Are Distinct Properties](pr
 
 ---
 
-## Premature Boundary Extraction
+## 10. Premature Boundary Extraction
 
 Creating a separate cell, service, or deployment unit before operational evidence
 justifies the separation.
@@ -109,7 +222,7 @@ See [Principle 3 — Implement Intent First, Extract Boundaries Later](principle
 
 ---
 
-## Boundary Absorption
+## 11. Boundary Absorption
 
 An AI assistant operating in a cell session solving problems that belong to another
 cell's domain — even when the solution is technically correct and requires no access
@@ -117,11 +230,11 @@ to out-of-bounds files.
 
 Boundary absorption is more subtle than cross-cell file access. It occurs when:
 
-- An EA Cell assistant answers a market thesis question (hypothesis-cell domain)
-  rather than redirecting to a hypothesis-cell session
-- An AI assistant in execution-cell session defines trade sizing rules (governance
+- An orchestration cell assistant answers a fraud scoring question (signal-scoring domain)
+  rather than redirecting to the signal-scoring cell session
+- An AI assistant in an execution cell session defines risk exposure rules (governance
   domain) because the operator raised the question mid-session
-- A hypothesis-cell assistant builds structural analysis logic (market-data domain)
+- A belief-formation cell assistant builds candidate ranking logic (qualification domain)
   to avoid an incomplete-seeming response
 
 The consequence is not immediately visible. The answer may be correct. The code may
@@ -136,7 +249,7 @@ See [Out-of-Scope Redirection](cell-development-model.md#out-of-scope-redirectio
 
 ---
 
-## In-Context Patching
+## 12. In-Context Patching
 
 Modifying shared prompt context, global configuration, or session state to correct
 the behaviour of a specific cell rather than replacing the responsible cell.

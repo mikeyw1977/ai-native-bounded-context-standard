@@ -72,7 +72,7 @@ Examples across domains:
 
 | Domain | Structural Narrative | Execution Record |
 |---|---|---|
-| Market intelligence | "Nuclear infrastructure entering a capex cycle" | "Enter LEU position at ≤$42" |
+| Market analysis | "Sector rotation signalling risk-off environment" | "Open defensive positioning review" |
 | Fraud detection | "Merchant cluster showing coordinated timing" | "Block transaction #123456" |
 | Customer success | "Enterprise account deteriorating post-upgrade" | "Escalate ticket #7890" |
 | Healthcare | "Patient population showing early metabolic indicators" | "Schedule screening for patient Y" |
@@ -115,11 +115,12 @@ consumer to perform its function at its stage of the value stream.
 
 **Why this matters:**
 
-Exposing more than necessary creates hidden coupling. If debate-cell emits full
-persona transcripts and portfolio-cell begins to reason about them, portfolio-cell
-now depends on debate-cell's internal representation. When debate-cell changes
-how it runs personas, portfolio-cell breaks — through a mechanism that no contract
-clause prevents, because the data was technically available.
+Exposing more than necessary creates hidden coupling. If an evaluation cell emits
+full reasoning transcripts and a downstream action cell begins to depend on their
+structure, that action cell now depends on the evaluation cell's internal
+representation. When the evaluation cell changes how it generates reasoning, the
+action cell breaks — through a mechanism that no contract clause prevents, because
+the data was technically available.
 
 The consumer should receive what it needs to act, not everything the provider knows.
 
@@ -128,11 +129,11 @@ The consumer should receive what it needs to act, not everything the provider kn
 At each value stream stage, ask: what is the minimum output from this cell that
 allows the next stage to perform its function without loss of correctness?
 
-- debate-cell → portfolio-cell: verdicts, conviction, horizon, divergence flag.
-  Not persona transcripts, not intermediate reasoning, not raw model outputs.
-- market-data-cell → debate-cell: ranked candidates with structural signals.
-  Not raw OHLCV bars, not intermediate scoring computations.
-- hypothesis-cell → market-data-cell: related tickers for a theme.
+- evaluation-cell → action-cell: verdicts, confidence score, priority, divergence flag.
+  Not reasoning transcripts, not intermediate scoring, not raw model outputs.
+- qualification-cell → evaluation-cell: ranked candidates with structural signals.
+  Not raw feature data, not intermediate scoring computations.
+- belief-cell → qualification-cell: candidate entities for the current scope.
   Not confidence history, not change log, not evidence accumulation detail.
 
 Consumers at later value stream stages accumulate more context because they need

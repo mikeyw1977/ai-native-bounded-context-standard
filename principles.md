@@ -219,8 +219,8 @@ from its data quality, completeness, or source reliability.
 
 Sources must not conflate these:
 
-* conviction: "this evidence strongly suggests buying this asset / escalating this
-  account / blocking this transaction"
+* conviction: "this evidence strongly suggests the outcome — approve this request /
+  escalate this case / flag this entity for review"
 * data quality: "this reading is complete / partial / based on limited history"
 
 Conflating them corrupts synthesis. A signal with low data completeness is not

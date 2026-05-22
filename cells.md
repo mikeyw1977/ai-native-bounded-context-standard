@@ -21,7 +21,7 @@ Potential qualification criteria include:
 * experimental volatility,
 * or distinct ownership.
 
-Premature cell proliferation is discouraged. See [Anti-Patterns — Premature Boundary Extraction](anti-patterns.md#premature-boundary-extraction).
+Premature cell proliferation is discouraged. See [Anti-Pattern 10 — Premature Boundary Extraction](anti-patterns.md#10-premature-boundary-extraction).
 
 See also: [Cell Boundary Trade-offs](#cell-boundary-trade-offs) for how to reason about co-location decisions before applying these criteria.
 

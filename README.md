@@ -30,7 +30,7 @@ governance, fitness functions, and independently evolvable cells.
 | [cells.md](cells.md) | Cell qualification, cell principles, performance measurement, corrective action |
 | [governance.md](governance.md) | Deterministic governance, recommendation-authority boundary, consequence classes, model accountability |
 | [patterns.md](patterns.md) | Topology, interface language, structural narrative vs execution record |
-| [anti-patterns.md](anti-patterns.md) | 11 explicitly discouraged patterns |
+| [anti-patterns.md](anti-patterns.md) | 12 explicitly discouraged patterns |
 | [reference.md](reference.md) | EA alignment, suggested lifecycle, standard philosophy |
 | [cell-development-model.md](cell-development-model.md) | Bounded AI development context, principle of least privilege, capability map, privilege elevation protocol |
 | [deployment-model.md](deployment-model.md) | Repo model, per-cell CI pipelines, versioning, state migration, deployable cell checklist |
@@ -65,17 +65,18 @@ governance, fitness functions, and independently evolvable cells.
 
 ## Anti-Patterns — Quick Reference
 
-* Prompt Monoliths
-* Hidden Coupling
-* Autonomous AI Authority
-* Semantic-Free Decomposition
-* Shared Prompt Architecture
-* Non-Testable Intelligence
-* Silent Transformation
-* Evidence Inflation
-* Confidence Conflation
-* Premature Boundary Extraction
-* In-Context Patching
+1. Prompt Monoliths
+2. Hidden Coupling
+3. Autonomous AI Authority
+4. Semantic-Free Decomposition
+5. Shared Prompt Architecture
+6. Non-Testable Intelligence
+7. Silent Transformation
+8. Evidence Inflation
+9. Confidence Conflation
+10. Premature Boundary Extraction
+11. Boundary Absorption
+12. In-Context Patching
 
 ---
 
