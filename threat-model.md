@@ -139,11 +139,21 @@ disabled, event publishing halted — in seconds, without a deployment cycle. Th
 response time is no longer constrained by patch approval and deployment windows.
 
 **Cell replacement rather than patching** changes the remediation model
-entirely. A compromised or vulnerable cell is not patched — it is regenerated
-from its specification documents in a clean environment. The patch backlog does
-not accumulate because the answer to any compromised cell is replacement, not
-repair. A cell with a complete specification (logic tree, contract, fitness
-functions) can be regenerated as a first-class operational response.
+for cell-level vulnerabilities. A compromised cell is not patched — it is
+regenerated from its specification documents in a clean environment. The cell
+implementation patch backlog does not accumulate because the answer to any
+compromised cell implementation is replacement, not repair.
+
+The distinction is important:
+
+> **Replace compromised cells. Patch compromised substrates.**
+
+Cell replacement eliminates the implementation patch backlog. It does not
+eliminate the need to patch the platform, runtime, base images, shared libraries,
+and model gateway that cells depend on. Vulnerabilities in the shared substrate —
+the foundation that all cells run on — still require traditional remediation.
+Vulnerabilities in a cell's own implementation are replaced away. Both are
+necessary; they are not the same problem.
 
 **Capability-scoped authority** limits blast radius. A compromised cell in a
 monolith can access everything the process can access. A compromised cell in an

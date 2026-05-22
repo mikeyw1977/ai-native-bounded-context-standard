@@ -88,6 +88,7 @@ reasons from.
 **The invariant:**
 
 > Prompts define behaviour. Tooling boundaries define authority.
+> A model may request authority; only the platform may grant it.
 
 A cell may only:
 

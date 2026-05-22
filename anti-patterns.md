@@ -323,4 +323,26 @@ Structural controls that work:
   whose disagreement rate approaches zero is a governance signal, not a sign of
   quality AI output.
 
+**Second-order failure modes** that calibration and structural controls must also
+address:
+
+* **Reviewer collusion** — reviewers coordinate around expected answers,
+  particularly in small teams where social pressure to agree is high. Multi-reviewer
+  approval on high-consequence decisions must require independent, non-coordinated
+  rationales. Sequential review (reviewer B sees reviewer A's decision) is not
+  independent review.
+* **Rationale laundering** — reviewers decide to approve and then write a plausible
+  rationale post-hoc. The form of independent reasoning is satisfied without the
+  substance. Detected by comparing rationale timing and quality patterns against
+  approval decisions over time.
+* **Calibration gaming** — reviewers reject occasional low-risk items to maintain
+  a non-zero disagreement rate and avoid appearing as rubber stamps, while
+  continuing to approve high-risk items without genuine scrutiny. The metric is
+  gamed; the governance is not improved. Calibration scoring must weight overrides
+  by consequence class, not count them equally.
+* **Expertise mismatch** — the reviewer is genuinely independent but not competent
+  to evaluate the consequence class of the decision. Independence without competence
+  produces confident wrong approvals. Consequence class assignment must include
+  minimum reviewer qualification requirements, not just reviewer independence.
+
 See [Governance — Consequence Classes](governance.md#the-recommendation-authority-boundary).
