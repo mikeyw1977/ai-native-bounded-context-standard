@@ -52,7 +52,7 @@ Convenience of co-location is not a reason. Shared runtime is not a reason. The 
 
 ## When co-location is genuinely appropriate
 
-Co-location within a fat cell is appropriate when the **domain vocabulary itself has not stabilised** — when you do not yet know what the right questions are, let alone who answers them. This applies to genuinely exploratory work where the business purpose of a capability is unknown, not merely underspecified.
+Co-location within a [fat cell](patterns.md#suggested-topology) is appropriate when the **domain vocabulary itself has not stabilised** — when you do not yet know what the right questions are, let alone who answers them. This applies to genuinely exploratory work where the business purpose of a capability is unknown, not merely underspecified.
 
 A system that frequently invokes "the domain is still being discovered" to justify co-location is accumulating coupling under an exploratory excuse. If you can name what a capability is for, you can bound it.
 

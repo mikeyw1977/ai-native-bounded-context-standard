@@ -201,7 +201,8 @@ If an AI-derived conclusion has operational consequence, it must be:
 * explicitly typed with a defined schema,
 * persistently stored with a stable identifier,
 * versioned with a change log,
-* traceable through a lineage chain to its evidence and downstream decisions.
+* traceable through a lineage chain to its evidence and downstream decisions
+  (see [Structural Narrative and Execution Record](patterns.md#structural-narrative-and-execution-record)).
 
 Keeping conclusions in prompt context makes them unauditable, unreplayable, and
 unattributable. When a decision based on an implicit belief turns out to be wrong,

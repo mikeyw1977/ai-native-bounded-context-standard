@@ -228,9 +228,9 @@ burden without the benefits of true cell independence. A cell extracted before i
 contract is stable will require repeated breaking changes. A cell extracted before
 its failure domain is understood creates operational risk without operational gain.
 
-The fat-cell pattern is explicitly supported as a legitimate architectural starting
-point. Extract boundaries when fitness-function evidence shows that the cost of
-coupling exceeds the cost of separation.
+The [fat-cell pattern](patterns.md#suggested-topology) is explicitly supported as
+a legitimate architectural starting point. Extract boundaries when fitness-function
+evidence shows that the cost of coupling exceeds the cost of separation.
 
 See [Principle 3 — Implement Intent First, Extract Boundaries Later](principles.md#3-implement-intent-first-extract-boundaries-later) and [Cell Boundary Trade-offs](cells.md#cell-boundary-trade-offs).
 
