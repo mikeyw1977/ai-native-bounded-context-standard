@@ -211,9 +211,9 @@ autonomous cells. It does not address:
 
 * **Principle 11** — Deterministic Governance: authority at the tooling boundary
   is the enforcement mechanism for this principle
-* **Anti-Pattern 13** — Prompt-Defined Authority: the specific failure mode when
+* **[Anti-Pattern 13 — Prompt-Defined Authority](anti-patterns.md#13-prompt-defined-authority)**: the specific failure mode when
   authority is defined in the prompt context
-* **Anti-Pattern 14** — Governance Theatre: the failure mode when approval gates
+* **[Anti-Pattern 14 — Governance Theatre](anti-patterns.md#14-governance-theatre)**: the failure mode when approval gates
   exist without genuine independent oversight
 * **Decomposition Watchdog** — structural and semantic checks are the detection
   mechanism for boundary and semantic integrity violations

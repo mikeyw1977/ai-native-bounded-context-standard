@@ -114,8 +114,7 @@ Value stream position documentation serves two purposes beyond operational
 clarity. First, it provides the contextual frame that an AI assistant needs
 to make correct judgment calls when generating a replacement — not just what
 the cell produces, but why that output matters to the broader flow. Second,
-it prevents semantic-free decomposition (the anti-pattern of splitting cells
-for technical convenience rather than business reason).
+it prevents [semantic-free decomposition (Anti-Pattern 4)](anti-patterns.md#4-semantic-free-decomposition) — splitting cells for technical convenience rather than business reason.
 
 The value stream position is scale-invariant. The same position in a value
 stream exists whether the system is operated by one person or a thousand.

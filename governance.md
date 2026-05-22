@@ -113,9 +113,9 @@ advance. Evidence thresholds are defined in deterministic terms — specific typ
 of evidence, minimum counts, recency requirements — not in terms of AI confidence
 scores.
 
-This is because AI confidence scores can be inflated by evidence inflation
-(the anti-pattern of counting the same source multiple times) and can be
-miscalibrated. Evidence thresholds based on identifiable, deduplicated source
+This is because AI confidence scores can be inflated by [evidence inflation
+(Anti-Pattern 8)](anti-patterns.md#8-evidence-inflation) — counting the same
+source multiple times — and can be miscalibrated. Evidence thresholds based on identifiable, deduplicated source
 records are auditable. Confidence-based thresholds are not.
 
 ### Conviction vs completeness
@@ -194,7 +194,7 @@ When a model version is deprecated:
 
 Model deprecation is a cell replacement event, not a configuration change.
 Changing a model reference inside a running cell without replacement is
-in-context patching (the anti-pattern defined in `anti-patterns.md`).
+[in-context patching (Anti-Pattern 12)](anti-patterns.md#12-in-context-patching).
 
 ---
 
