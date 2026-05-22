@@ -252,7 +252,7 @@ pnpm --filter ea-cell watchdog:semantic --diff HEAD~1..HEAD
 
 ## Relationship to Fitness Functions
 
-The decomposition watchdog is a category of fitness function (Principle 6).
+The decomposition watchdog is a category of fitness function (Principle 14).
 
 It validates:
 - boundary integrity (structural checks)

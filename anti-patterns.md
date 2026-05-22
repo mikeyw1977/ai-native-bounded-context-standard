@@ -51,7 +51,7 @@ Silent transformation makes pipelines undiagnosable, models uncalibratable, and
 systems untrustworthy. It is the mechanism by which failure becomes invisible until
 it is too expensive to trace.
 
-See [Principle 9 — Observable Transformation](principles.md#9-observable-transformation-principle).
+See [Principle 13 — Observable Transformation](principles.md#13-observable-transformation-principle).
 
 ---
 
@@ -87,7 +87,7 @@ must not emit a low confidence score when it means "I have incomplete data." It 
 instead emit high-quality uncertainty metadata that distinguishes between "I have
 seen this and doubt it" and "I have not seen enough to say."
 
-See [Principle 12 — Evidence Quality and Conviction Are Distinct Properties](principles.md#12-evidence-quality-and-conviction-are-distinct-properties).
+See [Principle 9 — Evidence Quality and Conviction Are Distinct Properties](principles.md#9-evidence-quality-and-conviction-are-distinct-properties).
 
 ---
 
@@ -105,7 +105,7 @@ The fat-cell pattern is explicitly supported as a legitimate architectural start
 point. Extract boundaries when fitness-function evidence shows that the cost of
 coupling exceeds the cost of separation.
 
-See [Principle 10 — Implement Intent First, Extract Boundaries Later](principles.md#10-implement-intent-first-extract-boundaries-later).
+See [Principle 3 — Implement Intent First, Extract Boundaries Later](principles.md#3-implement-intent-first-extract-boundaries-later).
 
 ---
 
@@ -151,4 +151,4 @@ boundary: instruct the cell-bound AI component with updated guidance within its 
 boundary, or replace the cell entirely with a new deployment. The shared context
 must not become a repair surface.
 
-See [Principle 13 — Cells Are Deployment Units](principles.md#13-cells-are-deployment-units--replace-dont-patch) and [Corrective Action Taxonomy](cells.md#corrective-action-taxonomy).
+See [Principle 16 — Cells Are Deployment Units](principles.md#16-cells-are-deployment-units--replace-dont-patch) and [Corrective Action Taxonomy](cells.md#corrective-action-taxonomy).

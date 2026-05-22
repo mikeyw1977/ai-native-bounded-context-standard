@@ -188,7 +188,7 @@ items 10–11 (boundary signposting, outstanding requests), AINBCAS principles,
 detailed contract schemas. These are looked up when a specific topic arises.
 
 If the full CLAUDE.md cannot fit in a session alongside the task itself, the cell
-has violated Principle 14 (AI comprehension). The fix is cell decomposition, not
+has violated Principle 6 (AI comprehension). The fix is cell decomposition, not
 CLAUDE.md summarisation.
 
 Item 10 is a required addition to every cell's CLAUDE.md:

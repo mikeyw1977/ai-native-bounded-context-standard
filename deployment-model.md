@@ -8,7 +8,7 @@
 
 A cell is a deployment unit. Its deployment lifecycle must be independent of every
 other cell. This is not a preference — it is the operational expression of
-Principle 13 and Principle 3. A cell that cannot be deployed without coordinating
+Principle 16 and Principle 4. A cell that cannot be deployed without coordinating
 with another cell has a hidden dependency that the contract surface does not
 express.
 

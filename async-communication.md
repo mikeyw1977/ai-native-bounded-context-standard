@@ -90,7 +90,7 @@ Cell B and produces its own event as a result, the new event carries the same
 ## Event Contracts
 
 Events are contracts, subject to the same versioning and governance as API
-contracts (Principle 5).
+contracts (Principle 10).
 
 ### Where event contracts live
 
@@ -226,8 +226,8 @@ without requiring a distributed tracing infrastructure (though one may complemen
 it).
 
 A flow that cannot be traced from the initiating event through each cell to its
-outcome cannot be diagnosed. Untraceable flows violate Principle 8 (Observability)
-and Principle 9 (Observable Transformation).
+outcome cannot be diagnosed. Untraceable flows violate Principle 12 (Observability)
+and Principle 13 (Observable Transformation).
 
 ---
 
@@ -245,7 +245,7 @@ enforces the business-first naming and scoping that Principle 2 requires.
 
 ### Events and AI artifacts
 
-AI-derived conclusions that have operational consequence (Principle 11) must be
+AI-derived conclusions that have operational consequence (Principle 8) must be
 stored as explicit artifacts before events are published. Do not publish events
 that carry AI reasoning inline as their only record. The reasoning is an artifact;
 the event is a notification that the artifact exists.
@@ -264,7 +264,7 @@ Events are contracts. They are versioned. They are owned by a producer cell.
 They are defined in `contracts/events/`. They are subject to the same governance
 as API contracts.
 
-A cell that publishes undocumented events is violating Principle 5 as clearly
+A cell that publishes undocumented events is violating Principle 10 as clearly
 as a cell that serves undocumented API routes.
 
 ---

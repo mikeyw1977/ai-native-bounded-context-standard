@@ -99,7 +99,7 @@ If a structural narrative only exists in prompt context or model memory, it does
 exist as an architectural artifact. It will be lost between sessions, cannot be
 audited, and cannot be linked to the decisions it informed.
 
-See also: [Principle 11 — AI Artifacts Are First-Class Versioned Objects](principles.md#11-ai-artifacts-are-first-class-versioned-objects)
+See also: [Principle 8 — AI Artifacts Are First-Class Versioned Objects](principles.md#8-ai-artifacts-are-first-class-versioned-objects)
 
 ---
 
@@ -155,7 +155,7 @@ internals are its contract, making it unreplaceable.
 **Audit access is a separate concern:**
 
 Information hiding at the contract boundary does not mean the internal
-representation is unavailable for audit. Observable transformation (Principle 9)
+representation is unavailable for audit. Observable transformation (Principle 13)
 requires cells to store their full intermediate outputs. Those outputs are
 accessible through audit mechanisms, not through the runtime contract.
 

@@ -25,7 +25,7 @@ override, model accountability).
 
 ## Principle: Deterministic Governance Overrides AI Interpretation
 
-*(Principle 4)*
+*(Principle 11)*
 
 AI systems may interpret, summarise, classify, hypothesise, critique, or
 recommend. AI systems must not:
@@ -99,7 +99,7 @@ execution points.
 ### Confidence is not permission
 
 A high-confidence AI output does not grant the AI permission to act autonomously.
-Confidence is a property of the output's directional certainty (Principle 12).
+Confidence is a property of the output's directional certainty (Principle 9).
 Authority to act is determined by the consequence class of the action, which is
 a governance decision independent of confidence.
 

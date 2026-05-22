@@ -26,9 +26,9 @@ governance, fitness functions, and independently evolvable cells.
 
 | Document | What it covers |
 |---|---|
-| [principles.md](principles.md) | The 13 foundational principles |
+| [principles.md](principles.md) | The 16 foundational principles |
 | [cells.md](cells.md) | Cell qualification, cell principles, performance measurement, corrective action |
-| [governance.md](governance.md) | Governance principles and fitness function categories |
+| [governance.md](governance.md) | Deterministic governance, recommendation-authority boundary, consequence classes, model accountability |
 | [patterns.md](patterns.md) | Topology, interface language, structural narrative vs execution record |
 | [anti-patterns.md](anti-patterns.md) | 11 explicitly discouraged patterns |
 | [reference.md](reference.md) | EA alignment, suggested lifecycle, standard philosophy |
@@ -36,7 +36,6 @@ governance, fitness functions, and independently evolvable cells.
 | [deployment-model.md](deployment-model.md) | Repo model, per-cell CI pipelines, versioning, state migration, deployable cell checklist |
 | [decomposition-watchdog.md](decomposition-watchdog.md) | Continuous boundary enforcement, structural and semantic drift detection, AI completion bias |
 | [evaluation-model.md](evaluation-model.md) | Technical vs business fitness, replay, A/B cell replacement protocol, spec-driven regeneration |
-| [governance.md](governance.md) | Deterministic governance, recommendation-authority boundary, consequence classes, model accountability |
 | [async-communication.md](async-communication.md) | Event model, domain events as value stream transitions, delivery guarantees, event contracts |
 
 ---
@@ -47,20 +46,20 @@ governance, fitness functions, and independently evolvable cells.
 |---|---|
 | 1 | AI Is a Capability, Not the Architecture |
 | 2 | Business Semantics Precede Technical Topology |
-| 3 | Cells Are Bounded Runtime Units |
-| 4 | Deterministic Governance Overrides AI Interpretation |
-| 5 | Contracts Are Mandatory |
-| 6 | Fitness Functions Are First-Class Architecture Components |
-| 7 | Cells Must Be Replaceable |
-| 8 | Observability Is Mandatory |
-| 9 | Observable Transformation Principle |
-| 10 | Implement Intent First, Extract Boundaries Later |
-| 11 | AI Artifacts Are First-Class Versioned Objects |
-| 12 | Evidence Quality and Conviction Are Distinct Properties |
-| 13 | Cells Are Deployment Units — Replace, Don't Patch |
-| 14 | Cells Must Be Sized for AI Comprehension |
-| 15 | Every Cell Must Declare Its Value Stream Position |
-| 16 | Cell Specifications Must Be Sufficient for AI-Assisted Regeneration |
+| 3 | Implement Intent First, Extract Boundaries Later |
+| 4 | Cells Are Bounded Runtime Units |
+| 5 | Every Cell Must Declare Its Value Stream Position |
+| 6 | Cells Must Be Sized for AI Comprehension |
+| 7 | Cell Specifications Must Be Sufficient for AI-Assisted Regeneration |
+| 8 | AI Artifacts Are First-Class Versioned Objects |
+| 9 | Evidence Quality and Conviction Are Distinct Properties |
+| 10 | Contracts Are Mandatory |
+| 11 | Deterministic Governance Overrides AI Interpretation |
+| 12 | Observability Is Mandatory |
+| 13 | Observable Transformation Principle |
+| 14 | Fitness Functions Are First-Class Architecture Components |
+| 15 | Cells Must Be Replaceable |
+| 16 | Cells Are Deployment Units — Replace, Don't Patch |
 
 ---
 
@@ -82,9 +81,17 @@ governance, fitness functions, and independently evolvable cells.
 
 ## Status
 
-AINBCAS is currently experimental, being explored through practical implementation
-using market intelligence systems, probabilistic analysis pipelines, and
-fitness-function-driven governance.
+AINBCAS is currently experimental, being validated through practical implementation
+in complex, multi-cell systems that emulate enterprise-scale concerns: multiple
+interacting value streams, independently deployable cells with explicit contracts,
+AI-assisted reasoning pipelines with deterministic governance gates, and
+fitness-function-driven boundary enforcement.
+
+The reference implementation deliberately mirrors the organisational complexity of
+a real enterprise — cross-cutting governance, sequential and parallel value stream
+stages, cells with distinct data ownership, and an EA layer that governs without
+absorbing domain logic. This complexity is the test bed: the standard is considered
+sound when it can govern a system of this kind without architectural drift.
 
 Future revisions will evolve based on operational evidence, evaluation data, and
 real-world architectural constraints.

@@ -26,8 +26,8 @@ Does the cell operate as contracted?
 - Outputs conform to the contracted schema
 - Contracts are honoured for all input conditions
 - Error conditions are handled as specified
-- Observable diagnostics are emitted (Principle 8)
-- Transformations are traceable (Principle 9)
+- Observable diagnostics are emitted (Principle 12)
+- Transformations are traceable (Principle 13)
 
 Functional failures are binary: the cell either behaves as contracted or it
 does not. They require immediate corrective action. They are detectable by
@@ -130,7 +130,7 @@ A cell that cannot be replayed cannot be evaluated. If you cannot reconstruct
 what a cell decided, on what inputs, under what conditions, you cannot determine
 whether a different implementation would have decided better.
 
-Every cell must store enough observable evidence (Principle 8) to replay its
+Every cell must store enough observable evidence (Principle 12) to replay its
 decisions post-hoc. This means:
 - Inputs at the time of decision
 - Outputs produced
@@ -227,7 +227,7 @@ Before promoting a replacement, validate it under real traffic:
 ### What A/B Validation Requires
 
 - Stable contracts (both implementations share the same interface)
-- Observable outputs (Principle 8 — both implementations emit comparable diagnostics)
+- Observable outputs (Principle 12 — both implementations emit comparable diagnostics)
 - A routing layer capable of shadow-mode traffic splitting (EA Cell responsibility)
 - Defined business fitness function baselines to compare against
 
@@ -259,7 +259,7 @@ accumulates learning. The implementation is replaced.
 
 ## Relationship to Observability and Transformation Principles
 
-Replay requires that Principle 8 (Observability) and Principle 9 (Observable
+Replay requires that Principle 12 (Observability) and Principle 13 (Observable
 Transformation) are implemented, not aspirational.
 
 A cell that does not emit what it received, what it produced, what it filtered,

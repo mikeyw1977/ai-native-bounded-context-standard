@@ -151,4 +151,4 @@ cells rather than evolving through replacement.
 Contracts are what make Replace safe. Without explicit contracts, replacement
 carries undefined downstream risk.
 
-See also: [Principle 13 — Cells Are Deployment Units](principles.md#13-cells-are-deployment-units--replace-dont-patch)
+See also: [Principle 16 — Cells Are Deployment Units](principles.md#16-cells-are-deployment-units--replace-dont-patch)
